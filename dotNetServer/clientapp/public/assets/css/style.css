@@ -1,0 +1,17 @@
+nav,
+nav .nav-wrapper i,
+nav a.sidenav-trigger,
+nav.nav-extended {
+  min-height: 84px;
+}
+nav,
+nav .nav-wrapper i,
+nav a.sidenav-trigger,
+nav a.sidenav-trigger i {
+  height: 64px;
+  line-height: 84px;
+}
+
+.carousel {
+  height: 595px;
+}

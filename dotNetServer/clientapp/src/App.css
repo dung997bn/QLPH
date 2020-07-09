@@ -1,0 +1,144 @@
+.fil0:hover {
+  fill: #5812d8;
+}
+
+.fnt0 {
+  font-size: 180px;
+  font-family: "Segoe UI Semibold", "Segoe UI";
+  text-decoration: none;
+}
+
+.modal {
+  max-height: 90%;
+  width: 55%;
+}
+
+nav ul a {
+  font-size: 1.5rem;
+}
+nav {
+  background-color: rgb(25, 86, 167) !important;
+}
+
+.page-footer {
+  background-color: rgb(25, 86, 167) !important;
+  padding-top: 2px;
+}
+
+.datepicker-date-display {
+  background-color: rgb(25, 86, 167) !important;
+}
+.datepicker-cancel,
+.datepicker-clear,
+.datepicker-today,
+.datepicker-done {
+  color: rgb(25, 86, 167) !important;
+}
+
+.btn {
+  background-color: #0dc706;
+}
+span.badge.new {
+  background-color: #0dc706;
+}
+
+table span.badge {
+  display: inline-table;
+  margin-left: auto;
+}
+
+.input-field {
+  margin-top: 0rem;
+  margin-bottom: 0rem;
+}
+
+.row {
+  margin-bottom: 0px;
+}
+
+table.weekly th {
+  font-weight: normal;
+  color: #ffffff;
+  background-color: rgb(25, 86, 167);
+  border: 2px solid #e7ebee;
+  padding: 0;
+  text-align: center;
+  height: 45px;
+}
+table.weekly td .blockLink {
+  font-weight: normal;
+  color: #f0f0f0;
+  background-color: #f0f0f0;
+  background: #f0f0f0;
+  padding: 0;
+
+  text-align: center;
+  min-height: 75px;
+  display: block;
+}
+
+table.weekly td.room {
+  font-weight: normal;
+  color: #ffffff;
+  background-color: rgb(25, 86, 167);
+  border: 1px solid #ffffff;
+  padding: 0;
+  text-align: center;
+  min-height: 75px;
+}
+table.weekly td {
+  border: 2px solid #f9fbfc;
+}
+
+table.weekly {
+  clear: both;
+  width: 100%;
+}
+
+table.daily th {
+  font-weight: normal;
+  color: #ffffff;
+  background-color: rgb(25, 86, 167);
+  border: 2px solid #e7ebee;
+  padding: 0;
+  text-align: center;
+  height: 45px;
+}
+
+table.daily td .blockLink {
+  font-weight: normal;
+  color: #f0f0f0;
+  background-color: #f0f0f0;
+  background: #f0f0f0;
+  padding: 0;
+
+  text-align: center;
+  min-height: 30px;
+  display: block;
+}
+
+table.daily td.room {
+  font-weight: normal;
+  color: #ffffff;
+  background-color: rgb(25, 86, 167);
+  border: 1px solid #ffffff;
+  padding: 0;
+  text-align: center;
+  min-height: 30px;
+}
+table.daily td {
+  border: 2px solid #f9fbfc;
+}
+
+table.daily {
+  clear: both;
+  width: 100%;
+}
+
+@media only screen and (max-width: 1080px) {
+  table.daily {
+    font-size: 9px !important;
+    white-space: normal !important;
+    word-break: break-all !important;
+  }
+}
