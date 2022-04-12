@@ -34,7 +34,7 @@ namespace Infrastructure.Imp
                     id_lanhdao = dangKy.id_lanhdao,
                     bat_dau = dangKy.bat_dau,
                     ket_thuc = dangKy.ket_thuc,
-                    ngay_dang_ky = DateTime.Parse(dangKy.ngay_dang_ky),
+                    ngay_dang_ky = dangKy.ngay_dang_ky,
                     ten_nguoi_dang_ky = dangKy.ten_nguoi_dang_ky,
                     email = dangKy.email,
                     sdt = dangKy.sdt,

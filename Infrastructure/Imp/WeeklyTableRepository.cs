@@ -89,7 +89,7 @@ namespace Infrastructure.Imp
                     for (var ngayDauTuan = startOfWeek; ngayDauTuan <= endOfWeek; ngayDauTuan = ngayDauTuan.AddDays(1))
                     {
                         var t = ngayDauTuan.ToString("yyyy-MM-dd");
-                        var listDangKyTrongNgay = ListDangKyTheoTuan.Where(d => DateTime.Parse(d.ngay_dang_ky).Date == ngayDauTuan.Date
+                        var listDangKyTrongNgay = ListDangKyTheoTuan.Where(d => d.ngay_dang_ky.Date == ngayDauTuan.Date
                         && d.id_phong == phong.id).ToList();
                         AddSlotTuan(listDangKyTrongNgay, row, phong, ngayDauTuan);
                     }
@@ -132,9 +132,9 @@ namespace Infrastructure.Imp
                         id = x.id,
                         id_phong = x.id_phong,
                         id_lanhdao = x.id_lanhdao,
-                        bat_dau = x.bat_dau,
-                        ket_thuc = x.ket_thuc,
-                        ngay_dang_ky = x.ngay_dang_ky,
+                        bat_dau = x.bat_dau.ToShortTimeString(),
+                        ket_thuc = x.ket_thuc.ToShortTimeString(),
+                        ngay_dang_ky = x.ngay_dang_ky.ToString(),
                         ten_nguoi_dang_ky = x.ten_nguoi_dang_ky,
                         email = x.email,
                         ghi_chu = x.ghi_chu,

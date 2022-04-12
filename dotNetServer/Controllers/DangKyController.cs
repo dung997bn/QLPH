@@ -50,16 +50,9 @@ namespace dotNetServer.Controllers
         [Route("postForm")]
         public IActionResult DangKy([FromBody] LichDangKy model)
         {
-            if (DateTime.Parse(model.ngay_dang_ky).Date <= DateTime.Now.Date)
+            if (model.ngay_dang_ky <= DateTime.Now.Date)
             {
                 return BadRequest(new { error = "Ngày đăng ký không hợp lệ" });
-            }
-            if (String.IsNullOrEmpty(model.email) || String.IsNullOrEmpty(model.ten_nguoi_dang_ky)
-                || String.IsNullOrEmpty(model.id_lanhdao.ToString()) || String.IsNullOrEmpty(model.id_phong.ToString())
-                || String.IsNullOrEmpty(model.bat_dau) || String.IsNullOrEmpty(model.ket_thuc) || String.IsNullOrEmpty(model.ngay_dang_ky)
-                || String.IsNullOrEmpty(model.thanh_phan) || String.IsNullOrEmpty(model.ghi_chu) || String.IsNullOrEmpty(model.noi_dung))
-            {
-                return BadRequest(new { error = "Vui lòng điền đầy đủ thông tin" });
             }
             var entity = new LichDangKy
             {
@@ -92,7 +85,7 @@ namespace dotNetServer.Controllers
             contentToUser = contentToUser.Replace("{{Email}}", res.email);
             contentToUser = contentToUser.Replace("{{Room}}", phong.ten_phong);
             contentToUser = contentToUser.Replace("{{ThoiGian}}", res.bat_dau + "-" + res.ket_thuc);
-            contentToUser = contentToUser.Replace("{{NgayDangKy}}", res.ngay_dang_ky);
+            //contentToUser = contentToUser.Replace("{{NgayDangKy}}", res.ngay_dang_ky);
             contentToUser = contentToUser.Replace("{{TinhTrang}}", res.tinh_trang);
             //Extra
             contentToUser = contentToUser.Replace("{{NoiDungCuocHop}}", res.noi_dung);

@@ -59,8 +59,7 @@ namespace Infrastructure.Imp
                     {
                         IEnumerable<LichDangKy> dangKyTheoNgay = _qlphReporitory.GetByDate(ToDay.Value);
 
-                        LichDangKy CurrenBooking = dangKyTheoNgay.FirstOrDefault(d => d.id_phong.Equals(phong.id)
-                        && d.bat_dau.Equals(currentTime.ToShortTimeString()));
+                        LichDangKy CurrenBooking = dangKyTheoNgay.FirstOrDefault(d => d.id_phong.Equals(phong.id) && d.bat_dau.Equals(currentTime));
                         var t = currentTime.ToShortTimeString();
                         row.time_headers.Add(new TimeHeader
                         {
@@ -99,13 +98,12 @@ namespace Infrastructure.Imp
             return dailyTable;
         }
 
-        public void AddDangKySlot(LichDangKy CurrenBooking, DailyRow row, List<SlotIndex> skipEmptySlotIndexes,
-          int rowIndex, int colIndex, DateTime currentTime, DateTime Today,
-          Phong phong)
+        public void AddDangKySlot(LichDangKy CurrenBooking, DailyRow row, List<SlotIndex> skipEmptySlotIndexes, int rowIndex, int colIndex, DateTime currentTime, DateTime Today, Phong phong)
         {
             if (CurrenBooking != null && CurrenBooking.tinh_trang == "Đã chấp nhận")
             {
-                var timeSpan = TimeSpan.ParseExact(CurrenBooking.ket_thuc, @"hh\:mm", CultureInfo.CurrentCulture) - TimeSpan.ParseExact(CurrenBooking.bat_dau, @"hh\:mm", CultureInfo.CurrentCulture);
+                //var timeSpan = TimeSpan.ParseExact(CurrenBooking.ket_thuc.ToShortTimeString(), @"hh\:mm", CultureInfo.CurrentCulture) - TimeSpan.ParseExact(CurrenBooking.bat_dau.ToShortTimeString(), @"hh\:mm", CultureInfo.CurrentCulture);
+                var timeSpan = CurrenBooking.ket_thuc - CurrenBooking.bat_dau;
                 var BookingTimeSpan = (int)timeSpan.TotalMinutes / 30;
 
                 row.slot_columns.Add(new DailySlotColumn
@@ -116,8 +114,8 @@ namespace Infrastructure.Imp
                     is_dangky = true,
                     is_room = false,
                     thoi_gian_dang_ky = BookingTimeSpan,
-                    bat_dau = CurrenBooking.bat_dau,
-                    ket_thuc = CurrenBooking.ket_thuc,
+                    bat_dau = CurrenBooking.bat_dau.ToShortTimeString(),
+                    ket_thuc = CurrenBooking.ket_thuc.ToShortTimeString(),
                     ghi_chu = CurrenBooking.ghi_chu,
                     tinh_trang = CurrenBooking.tinh_trang,
                     noi_dung = CurrenBooking.noi_dung

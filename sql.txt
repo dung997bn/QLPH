@@ -1,0 +1,432 @@
+USE [QuanLyDangKyPhongHopNeu]
+GO
+/****** Object:  Table [dbo].[AspNetRoles]    Script Date: 4/12/2022 2:16:04 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[AspNetRoles](
+	[Id] [nvarchar](128) NOT NULL,
+	[Name] [nvarchar](256) NOT NULL,
+ CONSTRAINT [PK_dbo.AspNetRoles] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[AspNetUserClaims]    Script Date: 4/12/2022 2:16:04 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[AspNetUserClaims](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[UserId] [nvarchar](128) NOT NULL,
+	[ClaimType] [nvarchar](max) NULL,
+	[ClaimValue] [nvarchar](max) NULL,
+ CONSTRAINT [PK_dbo.AspNetUserClaims] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[AspNetUserLogins]    Script Date: 4/12/2022 2:16:04 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[AspNetUserLogins](
+	[LoginProvider] [nvarchar](128) NOT NULL,
+	[ProviderKey] [nvarchar](128) NOT NULL,
+	[UserId] [nvarchar](128) NOT NULL,
+ CONSTRAINT [PK_dbo.AspNetUserLogins] PRIMARY KEY CLUSTERED 
+(
+	[LoginProvider] ASC,
+	[ProviderKey] ASC,
+	[UserId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[AspNetUserRoles]    Script Date: 4/12/2022 2:16:04 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[AspNetUserRoles](
+	[UserId] [nvarchar](128) NOT NULL,
+	[RoleId] [nvarchar](128) NOT NULL,
+ CONSTRAINT [PK_dbo.AspNetUserRoles] PRIMARY KEY CLUSTERED 
+(
+	[UserId] ASC,
+	[RoleId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[AspNetUsers]    Script Date: 4/12/2022 2:16:04 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[AspNetUsers](
+	[Id] [nvarchar](128) NOT NULL,
+	[HoTen] [nvarchar](128) NULL,
+	[DiaChi] [nvarchar](128) NULL,
+	[SDT] [varchar](128) NULL,
+	[Email] [nvarchar](256) NULL,
+	[EmailConfirmed] [bit] NOT NULL,
+	[PasswordHash] [nvarchar](max) NULL,
+	[SecurityStamp] [nvarchar](max) NULL,
+	[PhoneNumber] [nvarchar](max) NULL,
+	[PhoneNumberConfirmed] [bit] NOT NULL,
+	[TwoFactorEnabled] [bit] NOT NULL,
+	[LockoutEndDateUtc] [datetime] NULL,
+	[LockoutEnabled] [bit] NOT NULL,
+	[AccessFailedCount] [int] NOT NULL,
+	[UserName] [nvarchar](256) NOT NULL,
+ CONSTRAINT [PK_dbo.AspNetUsers] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[KhuNha]    Script Date: 4/12/2022 2:16:04 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[khu_nha](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[ten_khu_nha] [nvarchar](128) NULL,
+ CONSTRAINT [PK_dbo.KhuNha] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[LanhDao]    Script Date: 4/12/2022 2:16:04 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[lanh_dao](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[ho_ten] [nvarchar](128) NULL,
+	[chuc_vu] [nvarchar](128) NULL,
+	[email] [nvarchar](128) NULL,
+	[don_vi_cong_tac] [nvarchar](max) NULL,
+ CONSTRAINT [PK_dbo.LanhDao] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[LichDangKy]    Script Date: 4/12/2022 2:16:04 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[lich_dang_ky](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[TieuDe] [nvarchar](256) NULL,
+	[id_phong] [int] NOT NULL,
+	[bat_dau] [datetime] NOT NULL,
+	[ket_thuc] [datetime] NOT NULL,
+	[ngay_dang_ky] [datetime] NOT NULL,
+	[ten_nguoi_dang_ky] [nvarchar](128) NULL,
+	[email] [nvarchar](128) NULL,
+	[sdt] [varchar](128) NULL,
+	[tinh_trang] [nvarchar](128) NULL,
+	[thanh_phan] [nvarchar](max) NULL,
+	[id_lanhdao] [int] NOT NULL,
+	[noi_dung] [nvarchar](max) NULL,
+ CONSTRAINT [PK_dbo.LichDangKy] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[LichThietBi]    Script Date: 4/12/2022 2:16:04 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[LichThietBi](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[IDLichDangKy] [int] NULL,
+	[IDThietBi] [int] NULL,
+	[SoLuongThue] [int] NULL,
+	[TinhTrang] [nvarchar](128) NULL,
+	[NguoiThue] [nvarchar](max) NULL,
+ CONSTRAINT [PK_dbo.LichThietBi] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[LoaiPhong]    Script Date: 4/12/2022 2:16:04 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[loai_phong](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[ten_loai_phong] [nvarchar](128) NULL,
+ CONSTRAINT [PK_dbo.LoaiPhong] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Mails]    Script Date: 4/12/2022 2:16:04 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Mails](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[TenMail] [nvarchar](128) NULL,
+	[ValueOfMail] [int] NOT NULL,
+ CONSTRAINT [PK_dbo.Mails] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Phong]    Script Date: 4/12/2022 2:16:04 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Phong](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[ten_phong] [nvarchar](128) NULL,
+	[id_khu_nha] [int] NOT NULL,
+	[id_loai_phong] [int] NOT NULL,
+ CONSTRAINT [PK_dbo.Phong] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[ThietBi]    Script Date: 4/12/2022 2:16:04 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[ThietBi](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[TenThietBi] [nvarchar](128) NULL,
+	[SoLuong] [int] NOT NULL,
+ CONSTRAINT [PK_dbo.ThietBi] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+INSERT [dbo].[AspNetRoles] ([Id], [Name]) VALUES (N'Ad', N'Admin')
+GO
+INSERT [dbo].[AspNetRoles] ([Id], [Name]) VALUES (N'Rp', N'Report')
+GO
+INSERT [dbo].[AspNetUserRoles] ([UserId], [RoleId]) VALUES (N'389b0061-c1ed-4726-aea9-83af809404c0', N'Ad')
+GO
+INSERT [dbo].[AspNetUserRoles] ([UserId], [RoleId]) VALUES (N'389b0061-c1ed-4726-aea9-83af809404c0', N'Rp')
+GO
+INSERT [dbo].[AspNetUserRoles] ([UserId], [RoleId]) VALUES (N'a679d4de-f283-46b3-8b2e-ce03d9d7e2ae', N'Ad')
+GO
+INSERT [dbo].[AspNetUserRoles] ([UserId], [RoleId]) VALUES (N'a679d4de-f283-46b3-8b2e-ce03d9d7e2ae', N'Rp')
+GO
+INSERT [dbo].[AspNetUserRoles] ([UserId], [RoleId]) VALUES (N'c7724404-91bb-462b-9c82-613f19a4501d', N'Ad')
+GO
+INSERT [dbo].[AspNetUsers] ([Id], [HoTen], [DiaChi], [SDT], [Email], [EmailConfirmed], [PasswordHash], [SecurityStamp], [PhoneNumber], [PhoneNumberConfirmed], [TwoFactorEnabled], [LockoutEndDateUtc], [LockoutEnabled], [AccessFailedCount], [UserName]) VALUES (N'1178479e-dab0-4278-a4cd-e7e986a1fe58', N'Dương Kirin', N'Hà nội', NULL, N'drm1997bn@gmail.com', 1, N'AATKA0YeIzOE56QSR+GiaQT1yPnHzMTAFG8QOc0e5MlQ6SVxYk6aqaxEzmfZBsltIg==', N'a73ae483-e9e6-40e9-bfc0-434582bea110', NULL, 0, 0, NULL, 0, 0, N'dung998bn')
+GO
+INSERT [dbo].[AspNetUsers] ([Id], [HoTen], [DiaChi], [SDT], [Email], [EmailConfirmed], [PasswordHash], [SecurityStamp], [PhoneNumber], [PhoneNumberConfirmed], [TwoFactorEnabled], [LockoutEndDateUtc], [LockoutEnabled], [AccessFailedCount], [UserName]) VALUES (N'389b0061-c1ed-4726-aea9-83af809404c0', N'Nguyễn Xuân Dũng', N'Bắc Ninh', N'0964195598', N'phaichisophan@gmail.com', 1, N'AGB6ysEgRx9uBtQ4VRQleRUfqewLv8v0zHageseZkmBzo2tsstw/QJ1Jepvb7lW0tw==', N'4bcab946-89d5-44cd-9213-adc55acbfa2c', NULL, 0, 0, NULL, 0, 0, N'dung997bn')
+GO
+INSERT [dbo].[AspNetUsers] ([Id], [HoTen], [DiaChi], [SDT], [Email], [EmailConfirmed], [PasswordHash], [SecurityStamp], [PhoneNumber], [PhoneNumberConfirmed], [TwoFactorEnabled], [LockoutEndDateUtc], [LockoutEnabled], [AccessFailedCount], [UserName]) VALUES (N'a679d4de-f283-46b3-8b2e-ce03d9d7e2ae', N'Phạm Minh Hoàn', N'Viện Công nghệ thông tin và Kinh tế số', N'0949263666', N'hoanpm@neu.edu.vn', 1, N'AFHjvs/kMi3Mu7tPmRCGgZcGb+t9LQ5sWJYaIwXg4QnVoUBrcfhLsClA47x07Ij1NA==', N'29b075e6-08e5-4ee0-87a5-95b90f507ef0', NULL, 0, 0, NULL, 0, 0, N'hoanpm')
+GO
+INSERT [dbo].[AspNetUsers] ([Id], [HoTen], [DiaChi], [SDT], [Email], [EmailConfirmed], [PasswordHash], [SecurityStamp], [PhoneNumber], [PhoneNumberConfirmed], [TwoFactorEnabled], [LockoutEndDateUtc], [LockoutEnabled], [AccessFailedCount], [UserName]) VALUES (N'c7724404-91bb-462b-9c82-613f19a4501d', N'Dương Kirin', N'Bắc Ninh', NULL, N'11150961@st.neu.edu.vn', 1, N'AJuHBCIXbsmlcBPhogBFTDFL/oWftdYsYFvWoYEiXuuXEX/bineuW0rmoxbVGCcTLQ==', N'0a1fd5c9-40f0-4bef-bf43-690a34806035', NULL, 0, 0, NULL, 0, 0, N'11152203@st.neu.edu.vn')
+GO
+INSERT [dbo].[AspNetUsers] ([Id], [HoTen], [DiaChi], [SDT], [Email], [EmailConfirmed], [PasswordHash], [SecurityStamp], [PhoneNumber], [PhoneNumberConfirmed], [TwoFactorEnabled], [LockoutEndDateUtc], [LockoutEnabled], [AccessFailedCount], [UserName]) VALUES (N'd90995f0-c945-4c0d-bd5f-e8ab744b657d', N'Dương Kirin', N'Bắc Ninh', N'0964195598', N'ashton@gmail.com', 1, N'AM/94Brpeivs/O0bBfmOqCzvvKGe9YW+ejWbA+dei9IMFJYehslHVyD+M/WFdahi0w==', N'687ecbd9-6ff5-4240-9933-cc7938d3c374', NULL, 0, 0, NULL, 0, 0, N'ashtoncox')
+GO
+SET IDENTITY_INSERT [dbo].[khu_nha] ON 
+GO
+INSERT [dbo].[khu_nha] ([id], [ten_khu_nha]) VALUES (1, N'Tầng 5 Nhà A1')
+GO
+INSERT [dbo].[khu_nha] ([id], [ten_khu_nha]) VALUES (2, N'Tầng G Nhà A1')
+GO
+INSERT [dbo].[khu_nha] ([id], [ten_khu_nha]) VALUES (3, N'Tầng 10 Nhà A2')
+GO
+INSERT [dbo].[khu_nha] ([id], [ten_khu_nha]) VALUES (4, N'Tầng hầm B1')
+GO
+INSERT [dbo].[khu_nha] ([id], [ten_khu_nha]) VALUES (5, N'Tầng hầm B2')
+GO
+SET IDENTITY_INSERT [dbo].[khu_nha] OFF
+GO
+SET IDENTITY_INSERT [dbo].[lanh_dao] ON 
+GO
+INSERT [dbo].[lanh_dao] ([id], [ho_ten], [chuc_vu], [email], [don_vi_cong_tac]) VALUES (2, N'GS.TS Trần Thọ Đạt', N'Bí thư Đảng ủy', N'a@gmail.com', N'Đảng ủy')
+GO
+INSERT [dbo].[lanh_dao] ([id], [ho_ten], [chuc_vu], [email], [don_vi_cong_tac]) VALUES (3, N'PGS.TS Phạm Hồng Chương', N'Hiệu trưởng', N'b@gmail.com', N'Ban Giám hiệu')
+GO
+INSERT [dbo].[lanh_dao] ([id], [ho_ten], [chuc_vu], [email], [don_vi_cong_tac]) VALUES (4, N'PGS.TS Hoàng Văn Cường', N'Phó Hiệu trưởng', N'c@gmail.com', N'Ban Giám hiệu')
+GO
+INSERT [dbo].[lanh_dao] ([id], [ho_ten], [chuc_vu], [email], [don_vi_cong_tac]) VALUES (46, N'TS Nguyễn Trung Tuấn', N'Viện trưởng', N'a@gmail.com', N'Viện CNTT & KTS')
+GO
+INSERT [dbo].[lanh_dao] ([id], [ho_ten], [chuc_vu], [email], [don_vi_cong_tac]) VALUES (47, N'PGS. TS Trần Thị Vân Hoa', N'Phó Hiệu trưởng', N'd@gmail.com', N'Ban Giám hiệu')
+GO
+INSERT [dbo].[lanh_dao] ([id], [ho_ten], [chuc_vu], [email], [don_vi_cong_tac]) VALUES (48, N'PGS.TS Bùi Đức Thọ', N'Phó Hiệu trưởng', N'bdt@gmail.com', N'Ban Giám hiệu')
+GO
+SET IDENTITY_INSERT [dbo].[lanh_dao] OFF
+GO
+SET IDENTITY_INSERT [dbo].[lich_dang_ky] ON 
+GO
+INSERT [dbo].[lich_dang_ky] ([id], [TieuDe], [id_phong], [bat_dau], [ket_thuc], [ngay_dang_ky], [ten_nguoi_dang_ky], [email], [sdt], [tinh_trang], [thanh_phan], [id_lanhdao], [noi_dung]) VALUES (80, N'dungdung', 4, CAST(N'2022-04-12T13:30:00.000' AS DateTime), CAST(N'2022-04-12T17:00:00.000' AS DateTime), CAST(N'2019-04-12T00:00:00.000' AS DateTime), N'Nguyen Xuan Dung', N'11150961@st.neu.edu.vn', N'5435435345', N'Đã chấp nhận', N'rew', 4, N'Họp hội đồng')
+GO
+INSERT [dbo].[lich_dang_ky] ([id], [TieuDe], [id_phong], [bat_dau], [ket_thuc], [ngay_dang_ky], [ten_nguoi_dang_ky], [email], [sdt], [tinh_trang], [thanh_phan], [id_lanhdao], [noi_dung]) VALUES (120, N'hyhy', 3, CAST(N'2019-05-29T13:00:00.000' AS DateTime), CAST(N'2019-05-29T13:30:00.000' AS DateTime), CAST(N'2019-05-29T00:00:00.000' AS DateTime), N'Nguyen Xuan Dung', N'11150961@st.neu.edu.vn', N'0912946879', N'Đang chờ xử lý', N'11152208@st.neu.edu.vn', 2, N'Họp')
+GO
+INSERT [dbo].[lich_dang_ky] ([id], [TieuDe], [id_phong], [bat_dau], [ket_thuc], [ngay_dang_ky], [ten_nguoi_dang_ky], [email], [sdt], [tinh_trang], [thanh_phan], [id_lanhdao], [noi_dung]) VALUES (121, N'dungdung', 4, CAST(N'2019-05-29T13:00:00.000' AS DateTime), CAST(N'2019-05-29T16:00:00.000' AS DateTime), CAST(N'2019-05-29T00:00:00.000' AS DateTime), N'Nguyen Xuan Dung', N'11150961@st.neu.edu.vn', N'0912946879', N'Đã chấp nhận', N'11150961@st.neu.edu.vn,11152208@st.neu.edu.vn,11152294@st.neu.edu.vn', 4, N'Họp báo cáo')
+GO
+INSERT [dbo].[lich_dang_ky] ([id], [TieuDe], [id_phong], [bat_dau], [ket_thuc], [ngay_dang_ky], [ten_nguoi_dang_ky], [email], [sdt], [tinh_trang], [thanh_phan], [id_lanhdao], [noi_dung]) VALUES (122, N'hyhy', 3, CAST(N'2019-05-31T13:00:00.000' AS DateTime), CAST(N'2019-05-31T13:30:00.000' AS DateTime), CAST(N'2019-05-31T00:00:00.000' AS DateTime), N'Nguyen Xuan Dung', N'11150961@st.neu.edu.vn', N'0912946879', N'Đang chờ xử lý', N'11150961@st.neu.edu.vn', 2, N'Họp báo cáo')
+GO
+INSERT [dbo].[lich_dang_ky] ([id], [TieuDe], [id_phong], [bat_dau], [ket_thuc], [ngay_dang_ky], [ten_nguoi_dang_ky], [email], [sdt], [tinh_trang], [thanh_phan], [id_lanhdao], [noi_dung]) VALUES (123, N'dungdung', 8, CAST(N'2019-05-31T07:00:00.000' AS DateTime), CAST(N'2019-05-31T11:30:00.000' AS DateTime), CAST(N'2019-05-31T00:00:00.000' AS DateTime), N'Nguyen Xuan Dung', N'11150961@st.neu.edu.vn', N'0912946879', N'Đã chấp nhận', N'11150961@st.neu.edu.vn', 2, N'Họp')
+GO
+INSERT [dbo].[lich_dang_ky] ([id], [TieuDe], [id_phong], [bat_dau], [ket_thuc], [ngay_dang_ky], [ten_nguoi_dang_ky], [email], [sdt], [tinh_trang], [thanh_phan], [id_lanhdao], [noi_dung]) VALUES (124, N'dungdung', 4, CAST(N'2019-05-31T10:30:00.000' AS DateTime), CAST(N'2019-05-31T17:30:00.000' AS DateTime), CAST(N'2019-05-31T00:00:00.000' AS DateTime), N'Nguyen Xuan Dung', N'11150961@st.neu.edu.vn', N'0912946879', N'Đã chuyển', N'11150961@st.neu.edu.vn,11152208@st.neu.edu.vn', 3, N'Họp')
+GO
+INSERT [dbo].[lich_dang_ky] ([id], [TieuDe], [id_phong], [bat_dau], [ket_thuc], [ngay_dang_ky], [ten_nguoi_dang_ky], [email], [sdt], [tinh_trang], [thanh_phan], [id_lanhdao], [noi_dung]) VALUES (125, N'dungdung', 8, CAST(N'2019-05-31T13:30:00.000' AS DateTime), CAST(N'2019-05-31T17:00:00.000' AS DateTime), CAST(N'2019-05-31T00:00:00.000' AS DateTime), N'Nguyen Xuan Dung', N'11150961@st.neu.edu.vn', N'0912946879', N'Đã chấp nhận', N'11152208@st.neu.edu.vn', 3, N'Họp')
+GO
+INSERT [dbo].[lich_dang_ky] ([id], [TieuDe], [id_phong], [bat_dau], [ket_thuc], [ngay_dang_ky], [ten_nguoi_dang_ky], [email], [sdt], [tinh_trang], [thanh_phan], [id_lanhdao], [noi_dung]) VALUES (126, N'Họp hội đồng', 10, CAST(N'2019-05-31T12:00:00.000' AS DateTime), CAST(N'2019-05-31T13:00:00.000' AS DateTime), CAST(N'2019-05-31T00:00:00.000' AS DateTime), N'Nguyen Xuan Dung', N'11150961@st.neu.edu.vn', N'0912946879', N'Đã chuyển', N'11150961@st.neu.edu.vn,11152208@st.neu.edu.vn', 3, N'Họp')
+GO
+INSERT [dbo].[lich_dang_ky] ([id], [TieuDe], [id_phong], [bat_dau], [ket_thuc], [ngay_dang_ky], [ten_nguoi_dang_ky], [email], [sdt], [tinh_trang], [thanh_phan], [id_lanhdao], [noi_dung]) VALUES (127, N'dungdung', 5, CAST(N'2019-05-31T07:00:00.000' AS DateTime), CAST(N'2019-05-31T09:30:00.000' AS DateTime), CAST(N'2019-05-31T00:00:00.000' AS DateTime), N'Nguyen Xuan Dung', N'11150961@st.neu.edu.vn', N'0912946879', N'Đã chuyển', N'11152208@st.neu.edu.vn', 2, N'Họp')
+GO
+INSERT [dbo].[lich_dang_ky] ([id], [TieuDe], [id_phong], [bat_dau], [ket_thuc], [ngay_dang_ky], [ten_nguoi_dang_ky], [email], [sdt], [tinh_trang], [thanh_phan], [id_lanhdao], [noi_dung]) VALUES (128, N'dungdung', 6, CAST(N'2019-06-02T07:00:00.000' AS DateTime), CAST(N'2019-06-02T08:30:00.000' AS DateTime), CAST(N'2019-06-02T00:00:00.000' AS DateTime), N'Nguyen Xuan Dung', N'11150961@st.neu.edu.vn', N'0912946879', N'Đã chuyển', N'11150961@st.neu.edu.vn', 3, N'Họp')
+GO
+SET IDENTITY_INSERT [dbo].[lich_dang_ky] OFF
+GO
+SET IDENTITY_INSERT [dbo].[LichThietBi] ON 
+GO
+INSERT [dbo].[LichThietBi] ([ID], [IDLichDangKy], [IDThietBi], [SoLuongThue], [TinhTrang], [NguoiThue]) VALUES (3, 13, 3, 2, N'Đã trả', N'Dũng')
+GO
+
+SET IDENTITY_INSERT [dbo].[LichThietBi] OFF
+GO
+SET IDENTITY_INSERT [dbo].[loai_phong] ON 
+GO
+INSERT [dbo].[loai_phong] ([id], [ten_loai_phong]) VALUES (1, N'Đặc biệt')
+GO
+INSERT [dbo].[loai_phong] ([id], [ten_loai_phong]) VALUES (2, N'Phòng đa năng')
+GO
+INSERT [dbo].[loai_phong] ([id], [ten_loai_phong]) VALUES (4, N'Phòng họp')
+GO
+INSERT [dbo].[loai_phong] ([id], [ten_loai_phong]) VALUES (5, N'Phòng tiếp khách')
+GO
+INSERT [dbo].[loai_phong] ([id], [ten_loai_phong]) VALUES (6, N'Phòng hội thảo lớn')
+GO
+INSERT [dbo].[loai_phong] ([id], [ten_loai_phong]) VALUES (7, N'Phòng hội thảo nhỏ')
+GO
+INSERT [dbo].[loai_phong] ([id], [ten_loai_phong]) VALUES (8, N'Phòng hội thảo')
+GO
+INSERT [dbo].[loai_phong] ([id], [ten_loai_phong]) VALUES (9, N'Hội trường')
+GO
+SET IDENTITY_INSERT [dbo].[loai_phong] OFF
+GO
+SET IDENTITY_INSERT [dbo].[Mails] ON 
+GO
+INSERT [dbo].[Mails] ([ID], [TenMail], [ValueOfMail]) VALUES (139, N'XacNhanDaDangKy.html', 0)
+GO
+INSERT [dbo].[Mails] ([ID], [TenMail], [ValueOfMail]) VALUES (140, N'fromAdmin.html', 1)
+GO
+INSERT [dbo].[Mails] ([ID], [TenMail], [ValueOfMail]) VALUES (141, N'changeRoom.html', 2)
+GO
+INSERT [dbo].[Mails] ([ID], [TenMail], [ValueOfMail]) VALUES (142, N'notAccept.html', 3)
+GO
+INSERT [dbo].[Mails] ([ID], [TenMail], [ValueOfMail]) VALUES (143, N'requestToAdmin.html', 4)
+GO
+INSERT [dbo].[Mails] ([ID], [TenMail], [ValueOfMail]) VALUES (144, N'toMembers.html', 5)
+GO
+INSERT [dbo].[Mails] ([ID], [TenMail], [ValueOfMail]) VALUES (145, N'phaichisophan@gmail.com', 6)
+GO
+INSERT [dbo].[Mails] ([ID], [TenMail], [ValueOfMail]) VALUES (146, N'drm1997bn', 7)
+GO
+SET IDENTITY_INSERT [dbo].[Mails] OFF
+GO
+SET IDENTITY_INSERT [dbo].[Phong] ON 
+GO
+INSERT [dbo].[Phong] ([id], [ten_phong], [id_khu_nha], [id_loai_phong]) VALUES (1, N'Phòng họp A', 1, 4)
+GO
+INSERT [dbo].[Phong] ([id], [ten_phong], [id_khu_nha], [id_loai_phong]) VALUES (2, N'Phòng họp B', 1, 4)
+GO
+INSERT [dbo].[Phong] ([id], [ten_phong], [id_khu_nha], [id_loai_phong]) VALUES (3, N'Phòng họp C', 1, 4)
+GO
+INSERT [dbo].[Phong] ([id], [ten_phong], [id_khu_nha], [id_loai_phong]) VALUES (4, N'Phòng hội thảo', 2, 8)
+GO
+INSERT [dbo].[Phong] ([id], [ten_phong], [id_khu_nha], [id_loai_phong]) VALUES (5, N'Phòng tiếp khách', 1, 5)
+GO
+INSERT [dbo].[Phong] ([id], [ten_phong], [id_khu_nha], [id_loai_phong]) VALUES (6, N'B101', 4, 8)
+GO
+INSERT [dbo].[Phong] ([id], [ten_phong], [id_khu_nha], [id_loai_phong]) VALUES (7, N'B102', 4, 8)
+GO
+INSERT [dbo].[Phong] ([id], [ten_phong], [id_khu_nha], [id_loai_phong]) VALUES (8, N'B103', 4, 8)
+GO
+INSERT [dbo].[Phong] ([id], [ten_phong], [id_khu_nha], [id_loai_phong]) VALUES (9, N'B104', 4, 8)
+GO
+INSERT [dbo].[Phong] ([id], [ten_phong], [id_khu_nha], [id_loai_phong]) VALUES (10, N'A1', 5, 9)
+GO
+SET IDENTITY_INSERT [dbo].[Phong] OFF
+GO
+SET IDENTITY_INSERT [dbo].[ThietBi] ON 
+GO
+INSERT [dbo].[ThietBi] ([ID], [TenThietBi], [SoLuong]) VALUES (1, N'Máy chiếu', 100)
+GO
+INSERT [dbo].[ThietBi] ([ID], [TenThietBi], [SoLuong]) VALUES (2, N'Micro', 100)
+GO
+INSERT [dbo].[ThietBi] ([ID], [TenThietBi], [SoLuong]) VALUES (3, N'Video confering', 10)
+GO
+SET IDENTITY_INSERT [dbo].[ThietBi] OFF
+GO
+ALTER TABLE [dbo].[AspNetUserClaims]  WITH CHECK ADD  CONSTRAINT [FK_dbo.AspNetUserClaims_dbo.AspNetUsers_UserId] FOREIGN KEY([UserId])
+REFERENCES [dbo].[AspNetUsers] ([Id])
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[AspNetUserClaims] CHECK CONSTRAINT [FK_dbo.AspNetUserClaims_dbo.AspNetUsers_UserId]
+GO
+ALTER TABLE [dbo].[AspNetUserLogins]  WITH CHECK ADD  CONSTRAINT [FK_dbo.AspNetUserLogins_dbo.AspNetUsers_UserId] FOREIGN KEY([UserId])
+REFERENCES [dbo].[AspNetUsers] ([Id])
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[AspNetUserLogins] CHECK CONSTRAINT [FK_dbo.AspNetUserLogins_dbo.AspNetUsers_UserId]
+GO
+ALTER TABLE [dbo].[AspNetUserRoles]  WITH CHECK ADD  CONSTRAINT [FK_dbo.AspNetUserRoles_dbo.AspNetRoles_RoleId] FOREIGN KEY([RoleId])
+REFERENCES [dbo].[AspNetRoles] ([Id])
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[AspNetUserRoles] CHECK CONSTRAINT [FK_dbo.AspNetUserRoles_dbo.AspNetRoles_RoleId]
+GO
+ALTER TABLE [dbo].[AspNetUserRoles]  WITH CHECK ADD  CONSTRAINT [FK_dbo.AspNetUserRoles_dbo.AspNetUsers_UserId] FOREIGN KEY([UserId])
+REFERENCES [dbo].[AspNetUsers] ([Id])
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[AspNetUserRoles] CHECK CONSTRAINT [FK_dbo.AspNetUserRoles_dbo.AspNetUsers_UserId]
+GO
+ALTER TABLE [dbo].[lich_dang_ky]  WITH CHECK ADD  CONSTRAINT [FK_dbo.LichDangKy_dbo.LanhDao_IdLanhDao] FOREIGN KEY([id_lanhdao])
+REFERENCES [dbo].[lanh_dao] ([id])
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[lich_dang_ky] CHECK CONSTRAINT [FK_dbo.LichDangKy_dbo.LanhDao_IdLanhDao]
+GO
+ALTER TABLE [dbo].[lich_dang_ky]  WITH CHECK ADD  CONSTRAINT [FK_dbo.LichDangKy_dbo.Phong_IDPhong] FOREIGN KEY([id_phong])
+REFERENCES [dbo].[Phong] ([id])
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[lich_dang_ky] CHECK CONSTRAINT [FK_dbo.LichDangKy_dbo.Phong_IDPhong]
+GO
+ALTER TABLE [dbo].[Phong]  WITH CHECK ADD  CONSTRAINT [FK_dbo.Phong_dbo.KhuNha_IDKhuNha] FOREIGN KEY([id_khu_nha])
+REFERENCES [dbo].[khu_nha] ([id])
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[Phong] CHECK CONSTRAINT [FK_dbo.Phong_dbo.KhuNha_IDKhuNha]
+GO
+ALTER TABLE [dbo].[Phong]  WITH CHECK ADD  CONSTRAINT [FK_dbo.Phong_dbo.LoaiPhong_IDLoaiPhong] FOREIGN KEY([id_loai_phong])
+REFERENCES [dbo].[loai_phong] ([id])
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[Phong] CHECK CONSTRAINT [FK_dbo.Phong_dbo.LoaiPhong_IDLoaiPhong]
+GO
